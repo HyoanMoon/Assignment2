@@ -4,7 +4,7 @@ import express from 'express';
 
 import Movie from '../Models/movie';
 
-import { UserDisplayName } from '../Util'; 
+// import { UserDisplayName } from '../Util'; 
 
 export function DisplayMovieList(req: express.Request, res: express.Response , next: express.NextFunction)
 {
@@ -15,7 +15,7 @@ export function DisplayMovieList(req: express.Request, res: express.Response , n
         console.error(err);
         res.end(err);
     }
-    res.render('index', {title: 'Movie List', page: 'movie-list', movies: moviesCollections, displayName: UserDisplayName(req)});
+    res.render('index', {title: 'Movie List', page: 'movie-list', movies: moviesCollections, displayName: ''});
 
   })
 }
