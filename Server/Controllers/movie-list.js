@@ -17,6 +17,7 @@ function DisplayMovieList(req, res, next) {
 exports.DisplayMovieList = DisplayMovieList;
 function DisplayAddPage(req, res, next) {
     res.render('index', { title: 'Add', page: 'edit', movie: '', displayName: '' });
+    res.redirect('/movie-list');
 }
 exports.DisplayAddPage = DisplayAddPage;
 function DisplayEditPage(req, res, next) {
@@ -32,7 +33,7 @@ function DisplayEditPage(req, res, next) {
 exports.DisplayEditPage = DisplayEditPage;
 function ProcessAddPage(req, res, next) {
     let newMovie = new movie_1.default({
-        "name": req.body.movieName,
+        "Name": req.body.movieName,
         "Director": req.body.movieDirector,
         "Year": req.body.movieYear,
         "Rating": req.body.movieRating
@@ -42,8 +43,8 @@ function ProcessAddPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
+        res.redirect('/movie-list');
     });
-    res.redirect('/movie-list');
 }
 exports.ProcessAddPage = ProcessAddPage;
 function ProcessEditPage(req, res, next) {
